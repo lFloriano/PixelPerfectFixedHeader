@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<style type="text/css">
+			.tableHead{
+				display: block;
+				background-color: gray;
+			}
+			.tableBody{
+				display: block;
+				background-color: #eeeeff;
+				height: 100px;
+				overflow-y: auto;
+				overflow-x: hidden;	
+			}
+			table{
+				border-collapse: collapse;
+				table-layout: fixed; 
+			}
+			td, th{
+				border: 1px solid black;				
+			}
+		
+		</style>
+
+		<!--The actual script-->
+		<script type="text/javascript">
+			function FixarHeader(tableId){
+				var tabela, header, body;
+				var larguraCelulas = []; //Array p/ armazenar o tamanho das células de cada coluna
+				var aux1, todasLinhas;
+
+				tabela = document.getElementById(tableId);
+				head = tabela.getElementsByTagName("thead")[0];
+				body = tabela.getElementsByTagName("tbody")[0];
+
+
+				//Popula o array com os tamanhos de cada coluna
+				aux1 = head.getElementsByTagName("tr")[0].getElementsByTagName("th");
+				$(aux1).each(function(){
+					larguraCelulas.push(this.style.width);
+					//console.log(this.style.width);
+				});
+
+				//Desassocia header e body da tabela
+				$(head).addClass("tableHead");
+				$(body).addClass("tableBody");
+
+				//Aplica Tamanho a cada celula da tabela.
+				todasLinhas = tabela.getElementsByTagName("tr");
+				var numLinhas = todasLinhas.length;
+				var numColunas = larguraCelulas.length;
+				var colunas = [];
+
+				//Percorre as TRs 
+				for (let i = 0; i < numLinhas; i ++){
+					
+					//Percorre cada TD ou TH de cada linha
+					for(let j = 0; j < numColunas; j++){
+						colunas = todasLinhas[i].querySelectorAll("th, td");
+						
+						//Cria a div que definirá o tamanho da célula
+						var div = document.createElement("div");
+						div.style.width = String(larguraCelulas[j]);
+
+						console.log("\n\n Div width: " + div.style.width);						
+
+						//Insere a div dentro da celula
+						colunas[j].appendChild(div);
+					}
+				}
+
+
+			}
+		</script>
+
+	</head>
+<body>
+	<table id="tabelaOriginal" style="border-collapse: collapse;">
+		<thead style="background-color: gray;">
+			<tr>
+				<th style="width: 250px;">Coluna 1</th>
+				<th style="width: 350px;">Coluna 2</th>
+				<th style="width: 330px;">Coluna 3</th>
+				<th style="width: 150px;">Coluna 4</th>
+				<th style="width: 250px;">Coluna 5</th>
+			</tr>
+		</thead>
+		<tbody style="background-color: #ddddff">
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+			<tr>
+				<td>Conteudo lorem ipsumasdds</td>
+				<td>Conteudo Yoiriao asajhjaka jskajskfs a</td>
+				<td>Conteudo hhds alalslslla</td>
+				<td>Conteudo ajsa jash aj j </td>
+				<td>Conteudo shdjahlkllsk</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<script>
+		FixarHeader("tabelaOriginal");
+	</script>
+
+</body>
+</html>
